@@ -1,0 +1,9 @@
+body {
+    background-image: url("images/background.gif");
+    text-align: center;
+    color: white;
+}
+div {
+    display: inline-block;
+    text-align: left;
+}

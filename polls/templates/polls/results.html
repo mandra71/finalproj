@@ -1,9 +1,25 @@
-<h1>{{ question.question_text }}</h1>
+<!DOCTYPE html>
+<html>
+<head>
+{% load staticfiles %}
+<script type="text/javascript" src="{% static "fusioncharts/fusioncharts.js" %}"></script>
+<script type="text/javascript" src="{% static "fusioncharts/themes/fusioncharts.theme.fint.js" %}"></script>
 
-<ul>
-{% for choice in question.choice_set.all %}
-    <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
-{% endfor %}
-</ul>
+<title>Polls Results</title>
+<link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}" />
+</head>
+<body>
+    <h1>{{question.question_text}}</h1>
+    <div>
+        <ul>
+            {% for choice in question.choice_set.all %}
+        <li>{{ choice.choice_text }} -- {{ choice.votes }} vote{{ choice.votes|pluralize }}</li>
+            {% endfor %}
+        </ul>
+        <p id="top"></p>
+        <div id="chart-1"></div>
+        {{ output|safe }}
+        </div>
+</body>
 
-<a href="{% url 'polls:detail' question.id %}">Vote again?</a>
+</html>
